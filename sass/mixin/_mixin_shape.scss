@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+//方向判断
+@mixin direction($to-dir:upward,$border-color:#257cf0,$bg-color:#fff){
+	$direction-map: upward downward leftward rightward; 
+	$upward-map:$border-color $border-color $bg-color $bg-color;
+	$downward-map:$bg-color $bg-color $border-color $border-color;
+	$leftward-map:$border-color $bg-color $bg-color $border-color;
+	$rightward-map:$bg-color $border-color $border-color $bg-color;
+	$maps:(upward:$upward-map,downward:$downward-map,leftward:$leftward-map,rightward:$rightward-map);
+	border-color:map-get($maps,$to-dir);    
+}
+// 实心三角形
+@mixin trigon($width,$height,$to-dir,$border-color,$border-width:1px,$bg-color:#fff){
+	width:$width;
+	height:$height;
+	border-width: $border-width;
+	@include direction($to-dir,$border-color,$bg-color);
+	border-style: solid;
+	transform: rotate(-45deg);
+}
+
+// 三角形
+@mixin triangle($direction, $size, $borderColor ) {
+  content:"";
+  height: 0;
+  width: 0; 
+  @if $direction == top {
+    border-bottom:$size solid $borderColor;
+    border-left:$size dashed transparent;
+    border-right:$size dashed transparent;
+  } 
+  @else if $direction == right {
+    border-left:$size solid $borderColor;
+    border-top:$size dashed transparent;
+    border-bottom:$size dashed transparent;
+  } 
+  @else if $direction == bottom {
+    border-top:$size solid $borderColor;
+    border-left:$size dashed transparent;
+    border-right:$size dashed transparent;
+  } 
+  @else if $direction == left {
+    border-right:$size solid $borderColor;
+    border-top:$size dashed transparent;
+    border-bottom:$size dashed transparent;
+  }
+}
