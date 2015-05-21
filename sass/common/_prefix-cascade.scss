@@ -1,0 +1,17 @@
+@charset "utf-8";
+// 定义各种不兼容浏览器的前缀
+@mixin experimental($property, $value,
+	$moz      : $experimental-support-for-mozilla,
+	$webkit   : $experimental-support-for-webkit,
+	$ms       : $experimental-support-for-microsoft,
+	$o        : $experimental-support-for-opera,
+	$khtml    : $experimental-support-for-khtml,
+	$official : true
+) {
+	@if $webkit  and $experimental-support-for-webkit    { -webkit-#{$property} : $value; }
+	@if $khtml   and $experimental-support-for-khtml     {  -khtml-#{$property} : $value; }
+	@if $moz     and $experimental-support-for-mozilla   {    -moz-#{$property} : $value; }
+	@if $ms      and $experimental-support-for-microsoft {     -ms-#{$property} : $value; }
+	@if $o       and $experimental-support-for-opera     {      -o-#{$property} : $value; }
+	@if $official                                        {         #{$property} : $value; }
+}

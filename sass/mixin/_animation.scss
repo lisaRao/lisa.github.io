@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+@import "common/prefix-cascade";
+
+// 
+$animation-support: -moz, -webkit, not -ms, -o, -khtml;
+
+
+// 动画名
+$default-animation-name             : null !default;
+
+// 指定一个动画需要多少秒或毫秒完成
+$default-animation-duration         : null !default;
+
+// 动画开始之前指定一个延迟 'ms and 's
+$default-animation-delay            : null !default;
+
+// 指定动画的速度曲线 方法有  function(s) [ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier($number, $number, $number, $number)]
+$default-animation-timing-function  : null !default;
+
+// 指定动画循环执行多少次 [infinite(无限循环) | $number]
+$default-animation-iteration-count  : null !default;
+
+// 指定动画执行完一次后是否反向执行 [normal | alternate(反向)] (一般配合执行次数 >2 使用)
+$default-animation-direction        : null !default;
+
+// [none | forwards | backwards | both]
+// forwards 设置对象状态为动画结束帧（用于对象的最后一帧）。若动画执行次数为0，则状态为第一次的动画首帧。结束帧与执行次数和运动方向有关。
+// backwards 设置对象状态为动画结束帧（用于对象的最后一帧）。若动画执行次数为0，则状态为第一次的动画首帧。结束帧与执行次数和运动方向有关。
+// both 设置对象状态为动画结束帧（用于对象的最后一帧）。若动画执行次数为0，则状态为第一次的动画首帧。结束帧与执行次数和运动方向有关。
+
+$default-animation-fill-mode        : null !default;
+
+// 动画的状态 [running(执行) | paused(暂停)]
+$default-animation-play-state       : null !default;
+
+
+
+
+// Shortcut to apply any number of animations to an element, with all the settings.
+//     $animation... : Name and settings. [<values> | default]
+@mixin animation($animation...) {
+  $default: -compass-space-list(compact($default-animation-name $default-animation-duration $default-animation-timing-function $default-animation-delay $default-animation-iteration-count $default-animation-direction $default-animation-fill-mode $default-animation-play-state));
+  $animation: set-arglist-default($animation, $default);
+  @include experimental(animation, $animation, $animation-support...);
+}
