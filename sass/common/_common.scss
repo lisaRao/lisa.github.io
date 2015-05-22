@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+@import "rest";
+
+@include global-reset;
+
+
+@mixin form-font {
+	button, input, select, textarea {
+		font-size: 100%;
+		vertical-align: baseline;
+		*vertical-align: middle;
+	}
+}
+
+@mixin form-button {
+	button,
+	input[type="button"],
+	input[type="reset"],
+	input[type="submit"] {
+		-webkit-appearance: button;
+		cursor: pointer;
+		*overflow: visible;
+	}
+}
+
+@mixin clearfix($advanced:false)  {
+	@if $advanced {
+		.clearfix {
+			&:before,
+			&:after {
+				content: "";
+				display: table;
+			}
+			&:after {
+				clear: both;
+			}
+		}
+	}
+	@else {
+		.clearfix {
+			&:after {
+				content: "";
+				clear: both;
+				display:block;
+				height:0;
+				visibility:hidden;
+			}
+			*zoom: 1;
+		}
+	}
+
+
+}

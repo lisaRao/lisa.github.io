@@ -49,7 +49,7 @@
 	// font: 12px/1.5 tahoma,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;
 	// font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
 	// font: 12px/1.3 'Arial','Microsoft YaHei'
-	font: 12px/1.5 'Microsoft YaHei',tahoma,arial,Helvetica,sans-serif;
+	font: 12px/1.5 'Microsoft YaHei',tahoma,arial,Helvetica,sans-serif;	
 }
 // list style
 @mixin reset-list-style {
@@ -68,24 +68,5 @@
 @mixin reset-html5-block {
 	#{elements-of-type(html5-block)}{
 		display:block;
-	}
-}
-
-@mixin form-font {
-	button, input, select, textarea {
-		font-size: 100%;
-		vertical-align: baseline;
-		*vertical-align: middle;
-	}
-}
-
-@mixin form-button {
-	button,
-	input[type="button"],
-	input[type="reset"],
-	input[type="submit"] {
-		-webkit-appearance: button;
-		cursor: pointer;
-		*overflow: visible;
 	}
 }

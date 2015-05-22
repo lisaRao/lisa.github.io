@@ -26,7 +26,7 @@
 
 >  直接   @import "css3/css3" 就可以使用
 
-1. [animation](https://github.com/lisaRao/lisa.github.io/sass/animation_demo.scss)
+1. [animation](https://github.com/lisaRao/lisa.github.io/blob/master/sass/animation_demo.scss)
    使用方法 如下 `一定注意需要定义$flag 变量值[ true|false]`
    
 
