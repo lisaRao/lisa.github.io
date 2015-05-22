@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+$support: -moz -webkit  -ms -o !default;
+// support
+$experimental-support-for-mozilla      : $flag;
+$experimental-support-for-webkit       : $flag;
+$support-for-original-webkit-gradients : $flag;
+$experimental-support-for-opera        : $flag;
+$experimental-support-for-microsoft    : $flag;
+$experimental-support-for-khtml        : false;

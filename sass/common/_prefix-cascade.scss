@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 // 定义各种不兼容浏览器的前缀
 @mixin experimental($property, $value,
 	$moz      : $experimental-support-for-mozilla,
@@ -14,4 +15,24 @@
 	@if $ms      and $experimental-support-for-microsoft {     -ms-#{$property} : $value; }
 	@if $o       and $experimental-support-for-opera     {      -o-#{$property} : $value; }
 	@if $official                                        {         #{$property} : $value; }
+}
+
+@function set-arglist-default(
+  $arglist,
+  $default
+) {
+  $default: if(length($default) > 0, $default, null);
+  $output: compact();
+  @each $layer in $arglist {
+    $output: append($output, if($layer == 'default', $default, $layer));
+  }
+  @return if(length($output) > 0, $output, $default);
+}
+
+@function legacy-box($box) {
+  $box: unquote($box);
+  @if $box == padding-box { $box: padding; }
+  @if $box == border-box { $box: border; }
+  @if $box == content-box { $box: content; }
+  @return $box;
 }

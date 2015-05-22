@@ -2,9 +2,6 @@
 
 @import "common/prefix-cascade";
 
-// 
-$animation-support: -moz, -webkit, not -ms, -o, -khtml;
-
 
 // 动画名
 $default-animation-name             : null !default;
@@ -32,15 +29,72 @@ $default-animation-direction        : null !default;
 $default-animation-fill-mode        : null !default;
 
 // 动画的状态 [running(执行) | paused(暂停)]
-$default-animation-play-state       : null !default;
+$default-animation-play-state       : null !default; 
+
+// keyframes
+@mixin keyframes(
+  $name,
+  $moz      : $experimental-support-for-mozilla,
+  $webkit   : $experimental-support-for-webkit,
+  $o        : $experimental-support-for-opera,
+  $khtml    : $experimental-support-for-khtml,
+  $official : true
+) {
+	@if $moz {
+		@-moz-keyframes #{$name} { @content; }
+	}
+	@if $webkit {
+		@-webkit-keyframes #{$name} { @content; }
+	}
+	@if $o {
+		@-o-keyframes #{$name} { @content; }
+	}
+	@if $khtml {
+		@-khtml-keyframes #{$name} { @content; }
+	}
+	@if $official {	
+		@keyframes #{$name} { @content; }
+	}
+}
+
+// animation function argument
+
+@mixin animation-name($name...) {
+  $name: set-arglist-default($name, $default-animation-name);
+  @include experimental(animation-name, $name, $support...); }
+
+@mixin animation-duration($duration...) {
+  $duration: set-arglist-default($duration, $default-animation-duration);
+  @include experimental(animation-duration, $duration, $support...); }
+
+@mixin animation-delay($delay...) {
+  $delay: set-arglist-default($delay, $default-animation-delay);
+  @include experimental(animation-delay, $delay, $support...); }
+
+@mixin animation-timing-function($function...) {
+  $function: set-arglist-default($function, $default-animation-timing-function);
+  @include experimental(animation-timing-function, $function, $support...); }
+
+@mixin animation-iteration-count($count...) {
+  $count: set-arglist-default($count, $default-animation-iteration-count);
+  @include experimental(animation-iteration-count, $count, $support...); }
+
+@mixin animation-direction($direction...) {
+  $direction: set-arglist-default($direction, $default-animation-direction);
+  @include experimental(animation-direction, $direction, $support...); }
+
+@mixin animation-fill-mode($mode...) {
+  $mode: set-arglist-default($mode, $default-animation-fill-mode);
+  @include experimental(animation-fill-mode, $mode, $support...); }
+
+@mixin animation-play-state($state...) {
+  $state: set-arglist-default($state, $default-animation-play-state);
+  @include experimental(animation-play-state, $state, $support...); }
 
 
-
-
-// Shortcut to apply any number of animations to an element, with all the settings.
-//     $animation... : Name and settings. [<values> | default]
+//  $animation... : Name and settings. [<values> | default]
 @mixin animation($animation...) {
   $default: -compass-space-list(compact($default-animation-name $default-animation-duration $default-animation-timing-function $default-animation-delay $default-animation-iteration-count $default-animation-direction $default-animation-fill-mode $default-animation-play-state));
   $animation: set-arglist-default($animation, $default);
-  @include experimental(animation, $animation, $animation-support...);
+  @include experimental(animation, $animation, $support...);
 }
