@@ -1,29 +1,29 @@
 @charset "utf-8";
 
-@import "rest";
+@import "reset";
 
 @include global-reset;
 
-
-@mixin form-font {
+// 表单 默认样式修改
+@mixin form-input {
 	button, input, select, textarea {
 		font-size: 100%;
-		vertical-align: baseline;
-		*vertical-align: middle;
+		vertical-align: middle;
 	}
 }
 
+//表单按钮 默认样式修改
 @mixin form-button {
 	button,
 	input[type="button"],
 	input[type="reset"],
 	input[type="submit"] {
-		-webkit-appearance: button;
+		-webkit-appearance: none;
 		cursor: pointer;
 		*overflow: visible;
 	}
 }
-
+// 清楚浮动
 @mixin clearfix($advanced:false)  {
 	@if $advanced {
 		.clearfix {
@@ -49,6 +49,47 @@
 			*zoom: 1;
 		}
 	}
+}
+// 修改 input输入框 默认 样式[用于 移动端 和高级浏览器]
+@mixin appearance($advanced:false) {
+	@if $advanced {
+		input {
+			-webkit-appearance: none;
+			border-radius: 0;
+			box-shadow: none;
+			&:focus {
+				outline: 0 none;
+				border-color: #a2cdfb;
+			}
+			&::-webkit-input-placeholder {
+				color: #999;
+			}
+		}
+	}
+}
 
+// 改变 a 标签默认 带有下划线
+@mixin no-underline($flag:false) {
+	@if $flag {
+		a {
+			text-decoration: none;
+			color: inherit;
+			&:hover {
+				text-decoration: none;
+				color: inherit;
+			}
+		}
+	}
 
 }
+
+
+
+@mixin common-css {
+	@include form-font;
+	@include form-button;
+	@include clearfix;
+	@include appearance;
+}
+
+// @include common-css;
