@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+// @import "mixin/mixin_background-image";
+@import "mixin/sprite";
+
+
+
+.logo {	
+	@include git-pic(github_icon,png);
+}
+

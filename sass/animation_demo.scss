@@ -30,3 +30,30 @@ $flag: true;
 	background-color: green;
 	@include animation(moveX 800ms 2s both,fadeOutTop .3s forwards);     
 }
+
+// 
+@include keyframes(fadeIn){
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+// 
+@include keyframes(shake){
+	0% {
+		transform: scale(.9);
+	}
+	50% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(.9);
+	}
+}
+
+.about {
+	@include animation(fadeIn 200ms 2s ease backwards,shake 3s 2s ease infinite both);
+}

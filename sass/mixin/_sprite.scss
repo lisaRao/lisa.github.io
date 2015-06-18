@@ -1,0 +1,88 @@
+@charset "utf-8";
+
+//定义图片 相对路径
+@function image-path($name,$type){
+	$path: '../images/test/#{$name}.#{$type}';
+	@return  $path;
+}
+
+// 获取图片 宽高
+@function image-property($name,$type){
+	$property: ();
+	// $unit : unit($value); //取得其单位
+	$url: image-path($name,$type);
+	$width: image-width($url);
+	$height: image-height($url);
+	$property:append($property,$width);
+	$property:append($property,$height); 
+	
+	@return $property;
+}
+
+// repeat
+@mixin repeat($repeat:false){
+	@if $repeat == false {
+		background-repeat: no-repeat;
+	}
+	@else {
+		background-repeat: $repeat;
+	}
+}
+
+@mixin background-size($x,$y){
+	background-size: $x $y;
+}
+
+//获取单张背景图片
+@mixin git-pic($name,$type,$wrap-width:false){
+	$property: image-property($name,$type);
+	$x: nth($property,1);
+	$y: nth($property,2);	
+	$url: image-path($name,$type);	
+	
+	background-image: url(#{$url}); 
+	@include repeat;
+	//引用单张图片 等比例缩放根据 已知外框宽(px)计算出 现在显示图片 宽高 
+	@if $wrap-width {
+		$width: $wrap-width;
+		$height: ($width * $y)/ $x;
+		width: $width;
+		height: $height;
+		@include background-size($x,$height);
+	}
+	@else {	
+		width: $x;	
+		height: $y;	
+		@include background-size($x,$y);
+	}
+}
+
+
+// get sprite
+@mixin get-sprite-image($map, $sprite, $repeat: no-repeat, $media:true) {
+
+    $sprite-map: sprite-url($map);
+    $sprite-image: sprite-file($map, $sprite);
+    $sprite-position: sprite-position($map, $sprite);
+
+    $sprite-height: image-height($sprite-image);
+    $sprite-width: image-width($sprite-image);
+    //判断media
+    @if $media == true {
+      background-image: sprite-url($map);
+      background-position: 0 round(nth(sprite-position($map, $sprite), 2) / 2);
+      height: round(image-height(sprite-file($map, $sprite)) / 2);
+      width: round(image-width(sprite-file($map, $sprite)) /2 );
+      $double-width: ceil(image-width(sprite-path($map)) / 2);
+      $auto-height:auto;
+      background-size:$double-width $auto-height;
+      background-repeat:$repeat;
+
+    }
+    @else{
+        height: $sprite-height;
+        width: $sprite-width; 
+        background: $sprite-map $sprite-position $repeat;
+    }
+
+}
