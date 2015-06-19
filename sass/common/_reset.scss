@@ -30,7 +30,7 @@
 	img {
 		@include  reset-image-anchor-border;
 	}
-	a img {
+	a,img {
 		@include touch-callout;
 	}
 	@if $is-html5 == true {

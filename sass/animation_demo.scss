@@ -32,7 +32,7 @@ $flag: true;
 }
 
 // 
-@include keyframes(fadeIn){
+@include keyframes(fadeIn){ 
 	0% {
 		opacity: 0;
 	}

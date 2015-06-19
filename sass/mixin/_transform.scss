@@ -1,9 +1,15 @@
 @charset "utf-8";
 
 
-// 2D
-//	matrix(n,n,n,n,n,n)[六角矩阵]  translate(x,y)[x,y移动] translate(x) translate(y) scale(x,y) scale(x) scale(y) rotate(angle)[deg]
-//
-
-
-
+// 以下为 2D
+// matrix(n,n,n,n,n,n)[六角值矩阵]  
+// translate(x,y)[x,y 坐标轴偏移] translate(x) translate(y) 
+// scale(x,y)[缩放] scale(x) scale(y) 
+// rotate(angle)[deg] [角度旋转]
+// skew(x-angle,y-angle) [倾斜] skewX(x-angle)  skewY(y-angle)
+// 以下为 3D  [多以z轴3d视觉偏移或旋转缩放等]
+// matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n) [4x4 矩阵]
+// translate3d(x,y,z) translateZ(z)
+// scale3d(x,y,z)  scaleZ(z)
+// rotate3d(x-angle,y-angle,z-angle)  rotateX(x-angle)  rotateY(y-angle)  rotateZ(z)  
+// 
