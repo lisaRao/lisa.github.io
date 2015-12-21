@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+@import "color/colors";
+
+$color: green;
+$alpha: 0.3;
+$weight: 10;
+$percentage: 60%;
+$degrees: 10;
+
+header li {
+	background-color: rgba($color,$alpha);
+	color: red($color);
+	border: 1px solid;
+}
+
+
+.txt {
+	color: fade-out($color, 0.5);
+}

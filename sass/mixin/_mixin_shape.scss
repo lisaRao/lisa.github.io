@@ -46,3 +46,25 @@
     border-bottom:$size dashed transparent;
   }
 }
+@mixin triangle2($direction, $widthSize, $heightSize, $borderColor ) {
+  content:"";
+  height: 0;
+  width: 0;
+  border-style: solid; 
+  @if $direction == top {
+  border-width: 0 $heightSize/2 $widthSize $heightSize/2 ;
+  border-color: transparent transparent $borderColor transparent;
+  } 
+  @else if $direction == right {
+  border-width: $heightSize/2 0 $heightSize/2 $widthSize;
+  border-color: transparent transparent transparent $borderColor;
+  } 
+  @else if $direction == bottom {
+  border-width: $widthSize $heightSize/2  0 $heightSize/2 ;
+  border-color: $borderColor transparent transparent transparent;
+  } 
+  @else if $direction == left {
+  border-width: $heightSize/2 $widthSize $heightSize/2 0;
+  border-color: transparent $borderColor transparent transparent;
+  }
+}

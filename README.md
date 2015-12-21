@@ -64,5 +64,16 @@
 
 
 
-
+|
++- app
+|   +- index.html
+|   +- assets
+|       +- js
+|          +- foo.js
+|          +- bar.js
++- dist
+|   +- index.html
+|   +- js
+|       +- optimized.js
+|   +- style.css
 

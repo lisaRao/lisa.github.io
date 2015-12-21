@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+// 关于 filter 等
+
+// opacity
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	//IE 8  gt  filter
+	$opacity-ie: ($opacity * 100);
+	filter: alpha(opacity=$opacity-ie);
+}
+
+
+

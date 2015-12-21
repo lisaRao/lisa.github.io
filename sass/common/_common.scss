@@ -83,6 +83,15 @@
 
 }
 
+@mixin fonts {
+	body { 	font-family:'helvetica neue', arial,
+                   'hiragino sans gb', stheiti,
+                   'microsoft yahei', 
+                   'wenquanyi micro hei',
+                   sans-serif;
+	}
+}
+
 @mixin common-css {
 	@include form-font;
 	@include form-button;

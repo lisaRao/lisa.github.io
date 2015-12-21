@@ -7,9 +7,21 @@
 // scale(x,y)[缩放] scale(x) scale(y) 
 // rotate(angle)[deg] [角度旋转]
 // skew(x-angle,y-angle) [倾斜] skewX(x-angle)  skewY(y-angle)
+
+
+
 // 以下为 3D  [多以z轴3d视觉偏移或旋转缩放等]
 // matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n) [4x4 矩阵]
 // translate3d(x,y,z) translateZ(z)
 // scale3d(x,y,z)  scaleZ(z)
 // rotate3d(x-angle,y-angle,z-angle)  rotateX(x-angle)  rotateY(y-angle)  rotateZ(z)  
-// 
+// perspective
+
+
+// transform-origin: x y
+
+
+// transform-style
+
+// https://css-tricks.com/almanac/properties/t/transform/
+// https://css-tricks.com/almanac/properties/t/transform-style/
